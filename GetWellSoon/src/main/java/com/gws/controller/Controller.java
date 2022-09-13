@@ -1,6 +1,7 @@
 package com.gws.controller;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gws.model.DoctorList;
@@ -30,7 +32,7 @@ public class Controller
 	}
 	
 	@GetMapping("/patient/{id}")
-	public Optional<Patient> getPatient(@PathVariable("id") int patientId)
+	public Patient getPatient(@PathVariable("id") int patientId)
 	{
 		return gwsservice.getPatientById(patientId);
 	}
@@ -38,13 +40,20 @@ public class Controller
 	@PutMapping("/patient/{id}")
 	public Patient updatePatient(@PathVariable("id") int patientId, @RequestBody Patient patient)
 	{
-		Optional<Patient> p = gwsservice.getPatientById(patientId);
-		Patient p1=p.get();
-		p1.setPatientName(patient.getPatientName());
-		p1.setPatientAge(patient.getPatientAge());
-		p1.setPatientAddress(patient.getPatientAddress());
-		p1.setPatientPhone(patient.getPatientPhone());
-		return gwsservice.updatePatient(p1);
+		Patient p = gwsservice.getPatientById(patientId);
+		//Patient p1=p.get();
+		p.setPatientName(patient.getPatientName());
+		p.setPatientAge(patient.getPatientAge());
+		p.setPatientAddress(patient.getPatientAddress());
+		p.setPatientPhone(patient.getPatientPhone());
+		return gwsservice.updatePatient(p);
+	}
+	
+	//adding patient details
+	@PostMapping("/patient")
+	public Patient addPatientById(@RequestBody Patient patient)
+	{
+		return gwsservice.addPatient(patient);
 	}
 	
 	@GetMapping("/doctors")
