@@ -13,7 +13,7 @@ import com.gws.model.Patient;
 public interface PatientRepo extends JpaRepository<Patient, Integer>
 {
 	@Query
-	public Patient findByPhoneOrId(@Param(value = "patientId") int patientId, @Param(value = "patientPhone") String patientPhone);
+	public Patient findByPatientIdOrPatientPhone(int patientId, String patientPhone);
 	
 	
 }
