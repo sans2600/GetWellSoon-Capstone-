@@ -66,7 +66,7 @@ public class GWSService
 	//duplicate details
 	public Patient addPatient(Patient patient)
 	{
-		Patient p = patientrepo.findByPhoneOrId(patient.getPatientId());
+		Patient p = patientrepo.findByPhoneOrId(patient.getPatientId(), patient.getPatientPhone());
 	
 	if(p!=null)
 	{
