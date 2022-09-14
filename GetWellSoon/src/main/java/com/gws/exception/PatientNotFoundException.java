@@ -12,6 +12,5 @@ public class PatientNotFoundException extends RuntimeException {
 		super(message);
 		
 	}
-
 	
 }

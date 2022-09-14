@@ -26,6 +26,7 @@ public class GWSService
 	@Autowired
 	PatientRepo patientrepo;
 	
+	//show patient list
 	public List<Patient> getAllPatient() 
 	{
 		return patientrepo.findAll();
