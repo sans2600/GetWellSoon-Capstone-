@@ -49,7 +49,7 @@ public AppointmentData addAppointment(int patientId,int docId) {
 	{
 		throw new PatientNotFoundException("Doctor id is invalid");//Error
 	}
-	else if(doctor.isPresent()) {
+	else if(doctor.isPresent()) {//Doctor valid
 		throw new PatientNotFoundException("Patient id is invalid");
 	}
 	else {

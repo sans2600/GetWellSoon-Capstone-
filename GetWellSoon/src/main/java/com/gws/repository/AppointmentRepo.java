@@ -7,4 +7,4 @@ import com.gws.model.AppointmentData;
 
 public interface AppointmentRepo extends JpaRepository<AppointmentData, Integer>{
 
-}
+}//AppointmentRepo

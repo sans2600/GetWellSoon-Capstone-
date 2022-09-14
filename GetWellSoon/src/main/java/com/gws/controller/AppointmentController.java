@@ -26,6 +26,7 @@ public class AppointmentController {
 	public List<AppointmentData> allAppointments(){
 		return appService.getAllAppointment();
 	}
+	//Pending get
 	
 	
 }
