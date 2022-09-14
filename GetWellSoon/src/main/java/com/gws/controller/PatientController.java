@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gws.model.AppointmentData;
 import com.gws.model.DoctorList;
 import com.gws.model.Patient;
+import com.gws.service.AppointmentService;
 import com.gws.service.GWSService;
 
 @RestController
@@ -24,12 +26,15 @@ public class PatientController
 	@Autowired
 	GWSService gwsservice;
 	
-	@GetMapping("/patient")
-	public List<Patient> getPatient()
-	{
-		return gwsservice.getAllPatient();
-		
-	}
+	@Autowired
+	private AppointmentService appService;
+	
+//	@GetMapping("/patient")
+//	public List<Patient> getPatient()
+//	{
+//		return gwsservice.getAllPatient();
+//		
+//	}
 	
 	@GetMapping("/patient/{id}")
 	public Patient getPatient(@PathVariable("id") int patientId)
@@ -56,17 +61,23 @@ public class PatientController
 		return gwsservice.addPatient(patient);
 	}
 	
-	@GetMapping("/doctors")
-	public List<DoctorList> getDoctor()
+	@GetMapping("/doctorlist")
+	public List<DoctorList> getDoctorlist()
 	{
 		return gwsservice.getAllDoctor();
 	}
    
 	
-	@PostMapping("/booking")
-	public Patient bookAppointment(@RequestBody Patient patient  ) {
-		return gwsservice.bookAppointment(patient);
+//	@PostMapping("/booking")
+//	public Patient bookAppointment(@RequestBody Patient patient  ) {
+//		return gwsservice.bookAppointment(patient);
+//	}
+	
+	@PostMapping("/booking/{patientId}/{docId}")
+	public AppointmentData bookAppointment(@PathVariable int patientId,@PathVariable int docId) {
+		return appService.addAppointment(patientId, docId);
 	}
+	
 	
 //	@GetMapping("/doctor")
 //	{

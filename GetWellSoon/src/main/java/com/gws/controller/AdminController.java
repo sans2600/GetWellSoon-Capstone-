@@ -9,17 +9,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gws.model.AppointmentData;
+import com.gws.model.DoctorList;
+import com.gws.model.Patient;
 import com.gws.service.AppointmentService;
+import com.gws.service.GWSService;
 
 @RestController
-public class AppointmentController {
+public class AdminController {
 	@Autowired
 	private AppointmentService appService;
 	
+	@Autowired
+	GWSService gwsservice;
 	
-	@PostMapping("/booking/{patientId}/{docId}")
-	public AppointmentData bookAppointment(@PathVariable int patientId,@PathVariable int docId) {
-		return appService.addAppointment(patientId, docId);
+	@GetMapping("/admin/patient")
+	public List<Patient> getPatient()
+	{
+		return gwsservice.getAllPatient();
+		
+	}
+	
+	@GetMapping("/admin/doctors")
+	public List<DoctorList> getDoctor()
+	{
+		return gwsservice.getAllDoctor();
 	}
 	
 	@GetMapping("/appointments")
