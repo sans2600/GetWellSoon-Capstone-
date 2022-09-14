@@ -39,7 +39,7 @@ public class DoctorService {
 			return doctorrepo.save(doctorlist);
 			
 		}
-
+//
 			
 		}
 	
@@ -69,3 +69,4 @@ public class DoctorService {
 	
 
 }
+//

@@ -14,3 +14,4 @@ public interface DoctorRepo extends JpaRepository<DoctorList, Integer>{
 	
 
 }
+//
