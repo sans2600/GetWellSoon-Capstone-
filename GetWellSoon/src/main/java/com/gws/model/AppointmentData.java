@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -21,11 +22,11 @@ public class AppointmentData {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int appointId;
+	private int docId;
 	private int patientId;
 	private String patientName;
 	private String docName;
-//	private String appointDate;//missing
+	private String appointDate;//missing
 	private float docFees;
-	private int docId;
 }
 //

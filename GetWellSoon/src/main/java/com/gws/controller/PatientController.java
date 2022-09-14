@@ -68,14 +68,9 @@ public class PatientController
 	}
    
 	
-//	@PostMapping("/booking")
-//	public Patient bookAppointment(@RequestBody Patient patient  ) {
-//		return gwsservice.bookAppointment(patient);
-//	}
-	
-	@PostMapping("/booking/{patientId}/{docId}")
-	public AppointmentData bookAppointment(@PathVariable int patientId,@PathVariable int docId) {
-		return appService.addAppointment(patientId, docId);
+	@PostMapping("/booking/{patientId}/{docId}/{appointDate}")
+	public AppointmentData bookAppointment(@PathVariable int patientId,@PathVariable int docId, @PathVariable String appointDate) {
+		return appService.addAppointment(patientId, docId, appointDate);
 	}
 	
 	
