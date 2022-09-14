@@ -19,7 +19,7 @@ import com.gws.model.Patient;
 import com.gws.service.GWSService;
 
 @RestController
-public class Controller 
+public class PatientController 
 {
 	@Autowired
 	GWSService gwsservice;
@@ -50,7 +50,7 @@ public class Controller
 	}
 	
 	//adding patient details
-	@PostMapping("/patient")
+	@PostMapping("/patient_register")
 	public Patient addPatientById(@RequestBody Patient patient)
 	{
 		return gwsservice.addPatient(patient);

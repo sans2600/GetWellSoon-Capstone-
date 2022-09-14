@@ -16,4 +16,6 @@ public interface PatientRepo extends JpaRepository<Patient, Integer>
 	public Patient findByPatientIdOrPatientPhone(int patientId, String patientPhone);
 	
 	
+	
+	
 }
