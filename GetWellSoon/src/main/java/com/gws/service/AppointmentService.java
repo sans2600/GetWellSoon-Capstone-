@@ -28,7 +28,7 @@ public List<AppointmentData> getAllAppointment(){
 	return appoint.findAll();
 }
 //save appointment
-public AppointmentData addAppointment(int patientId,int docId) {
+public AppointmentData addAppointment(int patientId,int docId,String appointDate) {
 
 	Optional<Patient> patient = patientrepo.findById(patientId);
 	Optional<DoctorList> doctor= doctorrepo.findById(docId);
@@ -43,6 +43,7 @@ public AppointmentData addAppointment(int patientId,int docId) {
 		updatedAppointmentData.setDocName(d.getDocName());
 		updatedAppointmentData.setPatientId(p.getPatientId());
 		updatedAppointmentData.setPatientName(p.getPatientName());
+		updatedAppointmentData.setAppointDate(appointDate);
 		return appoint.save(updatedAppointmentData);
 	}
 	else if(patient.isPresent())

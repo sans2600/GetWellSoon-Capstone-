@@ -2,6 +2,7 @@ package com.gws.model;
 
 import java.util.Date;
 
+import org.springframework.http.HttpStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +13,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ErrorModel {
-	
 	private Date timestamp;
 	private String message;
 	private int status;
@@ -25,6 +25,7 @@ public class ErrorModel {
 		this.status = status;
 		this.path = path;
 	}
+	 
 	public Date getTimestamp() {
 		return timestamp;
 	}
@@ -37,6 +38,7 @@ public class ErrorModel {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
 	public int getStatus() {
 		return status;
 	}

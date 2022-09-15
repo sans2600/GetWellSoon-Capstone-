@@ -2,6 +2,8 @@ package com.gws.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +36,7 @@ public class DoctorController {
 	
 	//adding patient details
 		@PostMapping("/doctor_register")
-		public DoctorList addDoctorById(@RequestBody DoctorList doctorlist)
+		public DoctorList addDoctorById(@Valid @RequestBody DoctorList doctorlist)
 		{
 			return doctorservice.addDoctor(doctorlist);
 		}

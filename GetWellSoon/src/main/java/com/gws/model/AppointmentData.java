@@ -24,7 +24,7 @@ public class AppointmentData {
 	private int patientId;
 	private String patientName;
 	private String docName;
-//	private String appointDate;//missing
+	private String appointDate;
 	private float docFees;
 	private int docId;
 }
