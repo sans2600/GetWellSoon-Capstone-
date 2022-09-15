@@ -2,6 +2,8 @@ package com.gws.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,14 +39,15 @@ public class DoctorController {
 	{
 		return doctorservice.getDoctorById(docId);
 	}
-	
+	//
 	
 	//adding patient details
-	@PostMapping("/doctor_register")
-	public DoctorList addDoctorById(@RequestBody DoctorList doctorlist)
-	{
-		return doctorservice.addDoctor(doctorlist);
-	}	
+
+		@PostMapping("/doctor_register")
+		public DoctorList addDoctorById(@Valid @RequestBody DoctorList doctorlist)
+		{
+			return doctorservice.addDoctor(doctorlist);
+		}
 
 	
 	@PutMapping("/doctor/{id}")

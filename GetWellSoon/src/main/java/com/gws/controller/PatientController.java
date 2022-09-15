@@ -4,6 +4,8 @@ import java.util.List;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +37,7 @@ public class PatientController
 //		return gwsservice.getAllPatient();
 //		
 //	}
-	
+	//
 	@GetMapping("/patient/{id}")
 	public Patient getPatient(@PathVariable("id") int patientId)
 	{
@@ -56,7 +58,7 @@ public class PatientController
 	
 	//adding patient details
 	@PostMapping("/patient_register")
-	public Patient addPatientById(@RequestBody Patient patient)
+	public Patient addPatientById(@Valid@RequestBody Patient patient)
 	{
 		return gwsservice.addPatient(patient);
 	}
@@ -67,10 +69,12 @@ public class PatientController
 		return gwsservice.getAllDoctor();
 	}
    
-	
+
 	@PostMapping("/booking/{patientId}/{docId}/{appointDate}")
 	public AppointmentData bookAppointment(@PathVariable int patientId,@PathVariable int docId, @PathVariable String appointDate) {
 		return appService.addAppointment(patientId, docId, appointDate);
+
+
 	}
 	
 	
