@@ -37,7 +37,7 @@ public class PatientController
 //		return gwsservice.getAllPatient();
 //		
 //	}
-	
+	//
 	@GetMapping("/patient/{id}")
 	public Patient getPatient(@PathVariable("id") int patientId)
 	{

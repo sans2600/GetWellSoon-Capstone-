@@ -32,7 +32,7 @@ public class DoctorController {
 	{
 		return doctorservice.getDoctorById(docId);
 	}
-	
+	//
 	
 	//adding patient details
 		@PostMapping("/doctor_register")
