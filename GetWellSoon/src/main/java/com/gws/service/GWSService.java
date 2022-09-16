@@ -26,6 +26,23 @@ public class GWSService
 	@Autowired
 	PatientRepo patientrepo;
 	
+	//duplicate details
+		public Patient addPatient(Patient patient)
+		{
+			Patient p = patientrepo.findByPatientIdOrPatientPhone(patient.getPatientId(), patient.getPatientPhone());
+		
+		if(p!=null)
+		{
+			throw new DuplicatePatientDetailslException("Phone No. or Patient Id already exists");
+		}
+		else
+		{
+			return patientrepo.save(patient);
+		}
+
+			
+		}
+	
 	//show patient list
 	public List<Patient> getAllPatient() 
 	{
@@ -65,22 +82,7 @@ public class GWSService
 		return patientrepo.save(patient);
 	}
 	
-	//duplicate details
-	public Patient addPatient(Patient patient)
-	{
-		Patient p = patientrepo.findByPatientIdOrPatientPhone(patient.getPatientId(), patient.getPatientPhone());
 	
-	if(p!=null)
-	{
-		throw new DuplicatePatientDetailslException("Phone No. or Patient Id already exists");
-	}
-	else
-	{
-		return patientrepo.save(patient);
-	}
-
-		
-	}
 	
 
 }

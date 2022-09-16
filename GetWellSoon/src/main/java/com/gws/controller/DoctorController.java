@@ -33,22 +33,26 @@ public class DoctorController {
 	@Autowired
 	AppointmentService appoint;
 	
+	
+	//adding doctor details
+
+			@PostMapping("/doctor_register")
+			public DoctorList addDoctorById(@Valid @RequestBody DoctorList doctorlist)
+			{
+				return doctorservice.addDoctor(doctorlist);
+			}
+	
+			
+	//fetching doctor details by Doctor Id		
 
 	@GetMapping("/doctor/{id}")
 	public DoctorList getDoctorById(@PathVariable("id") int docId)
 	{
 		return doctorservice.getDoctorById(docId);
 	}
-	//
+
 	
-	//adding patient details
-
-		@PostMapping("/doctor_register")
-		public DoctorList addDoctorById(@Valid @RequestBody DoctorList doctorlist)
-		{
-			return doctorservice.addDoctor(doctorlist);
-		}
-
+    //update doctor details by Doctor ID
 	
 	@PutMapping("/doctor/{id}")
 	public DoctorList updateDoctor(@PathVariable("id") int docId, @RequestBody DoctorList doctorList)
@@ -67,6 +71,7 @@ public class DoctorController {
 		return doctorservice.updateDoctor(d);
 	}
 		
+	
 	//doctor fetching his appointment details
 	@GetMapping("/doctor/appointmentdata/{id}")
 	public List<AppointmentData> getAppointmentDataById(@PathVariable("id") int docId)
@@ -75,4 +80,4 @@ public class DoctorController {
 	}
 
 }
-//
+

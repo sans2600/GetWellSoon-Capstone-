@@ -56,14 +56,31 @@ public AppointmentData addAppointment(int patientId,int docId,String appointDate
  }
 }
 
-public List<AppointmentData> getAppointmentDataById(int appointId)
+
+
+//
+public List<AppointmentData> getAppointmentDataById(int docId)
 {
-	return appoint.findAllByDocId(appointId);
+
+	List<AppointmentData> doctor = appoint.findAllByDocId(docId);
+	
+	
+	if(doctor.listIterator().hasNext())
+	{
+		return appoint.findAllByDocId(docId);
+	}
+	else
+	{
+		throw new DoctorNotFoundException("No appointments scheduled for this Doctor");
+	}
+	
+	
 	
 }
 
 }
 //
+
 
 
 

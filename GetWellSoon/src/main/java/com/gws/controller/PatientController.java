@@ -31,19 +31,25 @@ public class PatientController
 	@Autowired
 	private AppointmentService appService;
 	
-//	@GetMapping("/patient")
-//	public List<Patient> getPatient()
-//	{
-//		return gwsservice.getAllPatient();
-//		
-//	}
-	//
+	
+	
+	//adding patient details
+		@PostMapping("/patient_register")
+		public Patient addPatientById(@Valid@RequestBody Patient patient)
+		{
+			return gwsservice.addPatient(patient);
+		}
+		
+	
+	//get patient details by Patient ID	
 	@GetMapping("/patient/{id}")
 	public Patient getPatient(@PathVariable("id") int patientId)
 	{
 		return gwsservice.getPatientById(patientId);
 	}
    
+	
+	//update patient details by Patient Id
 	@PutMapping("/patient/{id}")
 	public Patient updatePatient(@PathVariable("id") int patientId, @RequestBody Patient patient)
 	{
@@ -56,20 +62,16 @@ public class PatientController
 		return gwsservice.updatePatient(p);
 	}
 	
-	//adding patient details
-	@PostMapping("/patient_register")
-	public Patient addPatientById(@Valid@RequestBody Patient patient)
-	{
-		return gwsservice.addPatient(patient);
-	}
-	
+	//fetching doctor details
 	@GetMapping("/doctorlist")
 	public List<DoctorList> getDoctorlist()
 	{
 		return gwsservice.getAllDoctor();
 	}
    
-
+	
+	
+    //book appointment 
 	@PostMapping("/booking/{patientId}/{docId}/{appointDate}")
 	public AppointmentData bookAppointment(@PathVariable int patientId,@PathVariable int docId, @PathVariable String appointDate) {
 		return appService.addAppointment(patientId, docId, appointDate);
@@ -77,11 +79,6 @@ public class PatientController
 
 	}
 	
-	
-//	@GetMapping("/doctor")
-//	{
-//		public List<DoctorList> getDoc
-//	}
 
 	
 
