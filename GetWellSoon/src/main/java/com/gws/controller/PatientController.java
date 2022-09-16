@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.gws.model.AppointmentData;
 import com.gws.model.DoctorList;
 import com.gws.model.Patient;
@@ -23,6 +24,7 @@ import com.gws.service.AppointmentService;
 import com.gws.service.GWSService;
 
 @RestController
+
 public class PatientController 
 {
 	@Autowired
@@ -72,6 +74,7 @@ public class PatientController
 	
 	
     //book appointment 
+	
 	@PostMapping("/booking/{patientId}/{docId}/{appointDate}")
 	public AppointmentData bookAppointment(@PathVariable int patientId,@PathVariable int docId, @PathVariable String appointDate) {
 		return appService.addAppointment(patientId, docId, appointDate);
