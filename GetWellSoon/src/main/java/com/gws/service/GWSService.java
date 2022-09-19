@@ -82,7 +82,20 @@ public class GWSService
 		return patientrepo.save(patient);
 	}
 	
-	
+	public void deletePatientById(int patientId)
+	{
+		Optional<Patient> patient = patientrepo.findById(patientId);
+		
+		if(patient.isPresent())
+		{
+			patientrepo.deleteById(patientId);
+		}
+		else
+		{
+			throw new PatientNotFoundException("Patient Details Not Found");
+		}
+		
+	}
 	
 
 }

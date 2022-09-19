@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.gws.exception.DoctorNotFoundException;
 import com.gws.exception.DuplicateDoctortDetailslException;
 import com.gws.exception.DuplicatePatientDetailslException;
+import com.gws.exception.PatientNotFoundException;
 import com.gws.model.DoctorList;
 import com.gws.model.Patient;
 import com.gws.repository.DoctorRepo;
@@ -64,6 +65,21 @@ public class DoctorService {
 		public DoctorList updateDoctor(DoctorList doctorList)
 		{
 			return doctorrepo.save(doctorList);
+		}
+		
+		public void deleteDoctorById(int docId)
+		{
+			Optional<DoctorList> doctor = doctorrepo.findById(docId);
+			
+			if(doctor.isPresent())
+			{
+				doctorrepo.deleteById(docId);
+			}
+			else
+			{
+				throw new DoctorNotFoundException("Doctor Details Not Found");
+			}
+			
 		}
 	
 	
