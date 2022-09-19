@@ -2,6 +2,8 @@ package com.gws.service;
 
 
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import java.util.Optional;
@@ -56,25 +58,22 @@ public List<AppointmentData> getAllAppointment(){
 
 //save appointment
 
-public AppointmentData addAppointment(int patientId,int docId,String appointDate) {
+public AppointmentData addAppointment(int patientId,int docId,Date appointDate) {
 
  Optional<Patient> patient = patientrepo.findById(patientId);
 
  Optional<DoctorList> doctor= doctorrepo.findById(docId);
 
  if(patient.isPresent() && doctor.isPresent())
-
  {
+	 List<AppointmentData> list=appoint.findAll();
 
- List<AppointmentData> list=appoint.findAll();
-
- for(AppointmentData l :list) {
-
-  if(l.getAppointDate().equalsIgnoreCase(appointDate) && l.getDocId()==docId && l.getPatientId()==patientId) {
-
-  throw new DuplicatePatientDetailslException("Booking already done");
-
-  }
+	 for(AppointmentData l :list) 
+	 {
+		 if(l.getAppointDate().compareTo(appointDate)==0 && l.getDocId()==docId && l.getPatientId()==patientId) 
+		 {
+			 throw new DuplicatePatientDetailslException("Booking already done");
+		 }
 
  }
 

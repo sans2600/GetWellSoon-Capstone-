@@ -1,5 +1,7 @@
 package com.gws.controller;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import java.util.Optional;
@@ -7,6 +9,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -77,7 +80,7 @@ public class PatientController
     //book appointment 
 	
 	@PostMapping("/booking/{patientId}/{docId}/{appointDate}")
-	public AppointmentData bookAppointment(@PathVariable int patientId,@PathVariable int docId, @PathVariable String appointDate) {
+	public AppointmentData bookAppointment(@PathVariable int patientId,@PathVariable int docId, @Valid @PathVariable Date appointDate) {
 		return appService.addAppointment(patientId, docId, appointDate);
 	}
 	

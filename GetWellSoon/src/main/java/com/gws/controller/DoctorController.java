@@ -54,12 +54,10 @@ public class DoctorController {
 
 	
     //update doctor details by Doctor ID
-	
 	@PutMapping("/doctor/{id}")
-	public DoctorList updateDoctor(@PathVariable("id") int docId, @RequestBody DoctorList doctorList)
+	public DoctorList updateDoctor(@PathVariable("id") int docId, @Valid @RequestBody DoctorList doctorList)
 	{
 		DoctorList d = doctorservice.getDoctorById(docId);
-		//Patient p1=p.get();
 		d.setDocName(doctorList.getDocName());
 		d.setDocAddress(doctorList.getDocAddress());
 		d.setDocTiming(doctorList.getDocTiming());
