@@ -43,7 +43,7 @@ public class Patient
 	
 	
 	@Size(min=10,max=10,message="Patient phone number should be 10 digit" )
-    @Pattern(regexp="^[6-9]\\d{9}$", message="Patient phone number should start with 7/8/9")
+    @Pattern(regexp="^[6-9]\\d{9}$", message="Patient phone number should start with 6/7/8/9")
 	@Column(name="patientPhone")
 	private String patientPhone;
 	

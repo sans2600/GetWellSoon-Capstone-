@@ -20,7 +20,7 @@ public class AdminController {
 	private AppointmentService appService;
 	
 	@Autowired
-	GWSService gwsservice;
+	private GWSService gwsservice;
 	
 	@GetMapping("/admin/patient")
 	public List<Patient> getPatient()
