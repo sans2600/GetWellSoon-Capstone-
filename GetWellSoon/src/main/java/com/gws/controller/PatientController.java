@@ -57,7 +57,7 @@ public class PatientController
 	
 	//update patient details by Patient Id
 	@PutMapping("/patient/{id}")
-	public Patient updatePatient(@PathVariable("id") int patientId, @RequestBody Patient patient)
+	public Patient updatePatient(@PathVariable("id") int patientId,@Valid @RequestBody Patient patient)
 	{
 		Patient p = gwsservice.getPatientById(patientId);
 		//Patient p1=p.get();
