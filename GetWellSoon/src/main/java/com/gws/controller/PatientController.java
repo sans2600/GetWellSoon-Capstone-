@@ -32,7 +32,7 @@ import com.gws.service.GWSService;
 public class PatientController 
 {
 	@Autowired
-	GWSService gwsservice;
+	private GWSService gwsservice;
 	
 	@Autowired
 	private AppointmentService appService;

@@ -26,13 +26,13 @@ import com.gws.service.GWSService;
 public class DoctorController {
 	
 	@Autowired
-	DoctorService doctorservice;
+	private DoctorService doctorservice;
 	
 	@Autowired
-	GWSService gwsservice;
+	private GWSService gwsservice;
 	
 	@Autowired
-	AppointmentService appoint;
+	private AppointmentService appoint;
 	
 	
 	//adding doctor details

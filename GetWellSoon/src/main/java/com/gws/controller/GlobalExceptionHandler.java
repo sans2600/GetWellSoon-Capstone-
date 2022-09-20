@@ -28,7 +28,7 @@ import java.util.Collection;
 import org.springframework.http.HttpStatus;
 @RestControllerAdvice
 
-public class GlobalEceptionHandler extends ResponseEntityExceptionHandler {
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@Override
 	  protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
